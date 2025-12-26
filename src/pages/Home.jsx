@@ -1,0 +1,95 @@
+import { Linkedin, Github, X, Mail } from 'lucide-react';
+
+export default function Home() {
+  return (
+    <div className="min-h-[calc(100vh-80px)] flex items-center relative overflow-hidden py-12 mb-12 w-full">
+      
+      {/* Background Image */}
+      <div 
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat z-[-2]" 
+        style={{ backgroundImage: "url('/background_img.jpg')" }}
+      ></div>
+
+      {/* Dark Overlay for text readability */}
+      <div className="fixed inset-0 bg-black/70 z-[-1]"></div>
+
+      <div className="container relative z-10 px-6 mx-auto">
+        <div className="grid items-center gap-12 md:grid-cols-2">
+          
+          {/* Text Content */}
+          <div className="space-y-8 animate-fade-in-up">
+            <div>
+              <h3 className="mb-2 text-2xl font-medium md:text-3xl text-cyan-400">
+                Hello, I'm
+              </h3>
+              <h1 className="text-5xl font-black leading-tight tracking-wide text-white md:text-7xl">
+                Pasindu <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                  Mihikalpa
+                </span>
+              </h1>
+            </div>
+            
+            <h2 className="text-xl font-medium text-gray-300 md:text-2xl">
+              Business Intelligence | Data Science | AI
+            </h2>
+            
+            <p className="max-w-xl text-lg leading-relaxed text-gray-400">
+              I am an aspiring Data Analyst and Developer with a passion for uncovering insights and building interactive solutions. Dedicated to mastering BI, AI, and Data Science to make complex data visually compelling.
+            </p>
+            
+            {/* Social Media Links */}
+            <div className="flex gap-4 pt-4">
+              <a 
+                href="https://www.linkedin.com/in/pasindu-mihikalpa/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 border-2 border-[#2f3b4b] text-white rounded-full hover:border-cyan-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={24} />
+              </a>
+              <a 
+                href="https://github.com/your-username" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 border-2 border-[#2f3b4b] text-white rounded-full hover:border-cyan-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"
+                aria-label="GitHub"
+              >
+                <Github size={24} />
+              </a>
+              <a 
+                href="https://x.com/your-handle" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 border-2 border-[#2f3b4b] text-white rounded-full hover:border-cyan-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"
+                aria-label="Twitter"
+              >
+                <X size={24} />
+              </a>
+              <a 
+                href="mailto:pmihikalpa2022@gmail.com" 
+                className="p-4 border-2 border-[#2f3b4b] text-white rounded-full hover:border-cyan-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"
+                aria-label="Email"
+              >
+                <Mail size={24} />
+              </a>
+            </div>
+          </div>
+
+          {/* Profile Image */}
+          <div className="relative z-10 flex justify-center group">
+            <div className="relative z-10 p-3 bg-[#050A15]/60 border-2 border-[#1f2937] rounded-[40px] group-hover:border-cyan-400 transition-colors duration-500 backdrop-blur-sm">
+              <img 
+                src="src/assets/my_profile.png" 
+                alt="Pasindu Mihikalpa" 
+                className="w-full max-w-[480px] h-auto object-cover rounded-[30px] filter grayscale-[30%] group-hover:grayscale-0 transform group-hover:scale-[1.02] transition-all duration-500 ease-out"
+              />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}
