@@ -63,7 +63,7 @@ export default function About() {
 
             {/* Download CV Button */}
             <div className="pt-6">
-              <Button variant="outline" href="/path-to-your-cv.pdf">
+              <Button variant="outline" href="/portfolio/cv.pdf">
                 Download CV <Download size={20} />
               </Button>
             </div>

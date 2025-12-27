@@ -126,40 +126,59 @@ ResumeSection.propTypes = {
 // --- DATA ---
 const experienceData = [
   {
-    date: "Oct 2025 - Nov 2025",
-    title: "Project Chairperson- 'Melodic Mind'",
-    subtitle: "Leo Club of Uva Wellassa University",
+    date: "2024",
+    title: "Project Chairperson – Akurata Rukulak 2024",
+    subtitle: "Department of Information and Communication Technology, Uva Wellassa University of Sri Lanka",
     badge: "Volunteering",
-    description: "Led a mental well-being project focusing on music therapy to help students manage stress."
+    description: "Annual CSR initiative by ICT undergraduates supporting underprivileged schools in the Badulla district through educational and resource-based assistance."
   },
   {
-    date: "2024 - Present",
-    title: "Joint Secretary",
+    date: "2024 – Present",
+    title: "Member, Board of Directors",
     subtitle: "Leo Club of Uva Wellassa University",
     badge: "Volunteering",
-    description: "A Secretary manages records, correspondence, and meeting minutes, ensuring smooth communication and organized administration within the organization."
+    description: "Serving on the board to drive community service initiatives and chapter governance."
   },
-  // Dummy Data to test the "Show More" functionality
+  {
+    date: "2024 – Present",
+    title: "Editorial Crew Member (Leostic Year 2024/2025)",
+    subtitle: "Leo Club of Uva Wellassa University",
+    badge: "Volunteering",
+    description: "Contributed to content writing and maintained the LEO TIMES newsletter."
+  },
+  {
+    date: "2025 – 2026",
+    title: "Joint Secretary (Leostic Year 2025/2026)",
+    subtitle: "Leo Club of Uva Wellassa University",
+    badge: "Volunteering",
+    description: "Managed records, official correspondence, and meeting minutes to ensure effective communication and organized administration."
+  },
   {
     date: "2025",
-    title: "Organizing Commitee Member -Volunteer Traning Session",
+    title: "Project Chairperson – Melodic Mind",
+    subtitle: "Leo Club of Uva Wellassa University & Leo Club of S. Thomas’ College, Bandarawela",
+    badge: "Volunteering",
+    description: "Led a collaborative mental well-being project addressing academic stress through professional counseling and music therapy."
+  },
+  {
+    date: "2024 – Present",
+    title: "Member",
     subtitle:"IEEE Uva Wellassa University Student Branch",
-    type: "Volunteering",
-    description: "Active member contributing to various community service and leadership development projects."
+    badge: "Volunteering",
+    description: "Active member contributing to community service and leadership development projects."
   },
   {
-    date: "2024 - 2025",
-    title: "Editorial Crew Member",
-    subtitle: "Leo Club of Uva Wellassa University",
+    date: "2025",
+    title: "Organizing Committee Member – Volunteer Training Session",
+    subtitle:"IEEE Uva Wellassa University Student Branch",
     badge: "Volunteering",
-    description: "Content Writing to Newsletter and support to maintaining LEO TIMES newsletter."
+    description: "Supported a leadership development initiative preparing volunteers for effective community service through skill-building and teamwork."
   },
   {
-    date: "2024",
-    title: "Project Chairperson - Akurata Rukulak 2024",
-    subtitle: "Department of Information and communication Technology, Uva Wellassa University of Sri Lanka",
-    badge: "Volunteering",
-    description: "Akurata Rukulak is an annual CSR project by ICT undergraduates of Uva Wellassa University, supporting underprivileged schools in Badulla."
+    date: "2025",
+    title: "Executive Committee Member – ByteBash Version 2",
+    subtitle:"Department of ICT, Uva Wellassa University",
+    description: "Supported a monthly tech-talk series to share knowledge, discuss emerging technologies, and enhance students’ technical and communication skills."
   }
 ];
 
