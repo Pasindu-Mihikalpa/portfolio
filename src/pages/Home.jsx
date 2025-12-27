@@ -1,4 +1,5 @@
 import { Linkedin, Github, X, Mail } from 'lucide-react';
+import myProfile from '../assets/my_profile.png';
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
       {/* Background Image */}
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat z-[-2]" 
-        style={{ backgroundImage: "url('/background_img.jpg')" }}
+        style={{ backgroundImage: "url('/portfolio/background_img.jpg')" }}
       ></div>
 
       {/* Dark Overlay for text readability */}
@@ -81,7 +82,7 @@ export default function Home() {
           <div className="relative z-10 flex justify-center group">
             <div className="relative z-10 p-3 bg-[#050A15]/60 border-2 border-[#1f2937] rounded-[40px] group-hover:border-cyan-400 transition-colors duration-500 backdrop-blur-sm">
               <img 
-                src="src/assets/my_profile.png" 
+                src={myProfile} 
                 alt="Pasindu Mihikalpa" 
                 className="w-full max-w-[480px] h-auto object-cover rounded-[30px] filter grayscale-[30%] group-hover:grayscale-0 transform group-hover:scale-[1.02] transition-all duration-500 ease-out"
               />
