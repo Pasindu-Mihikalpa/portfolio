@@ -140,11 +140,11 @@ const experienceData = [
     description: "Serving on the board to drive community service initiatives and chapter governance."
   },
   {
-    date: "2024 – Present",
+    date: "2024 – 2025",
     title: "Editorial Crew Member (Leostic Year 2024/2025)",
     subtitle: "Leo Club of Uva Wellassa University",
     badge: "Volunteering",
-    description: "Contributed to content writing and maintained the LEO TIMES newsletter."
+    description: "Contributed to content writing and supported maintenance of the LEO TIMES newsletter."
   },
   {
     date: "2025 – 2026",
@@ -163,22 +163,22 @@ const experienceData = [
   {
     date: "2024 – Present",
     title: "Member",
-    subtitle:"IEEE Uva Wellassa University Student Branch",
+    subtitle: "IEEE Uva Wellassa University Student Branch",
     badge: "Volunteering",
-    description: "Active member contributing to community service and leadership development projects."
+    description: "Active member contributing to leadership development and community service projects."
   },
   {
     date: "2025",
     title: "Organizing Committee Member – Volunteer Training Session",
-    subtitle:"IEEE Uva Wellassa University Student Branch",
+    subtitle: "IEEE Uva Wellassa University Student Branch",
     badge: "Volunteering",
-    description: "Supported a leadership development initiative preparing volunteers for effective community service through skill-building and teamwork."
+    description: "Contributed to a leadership development initiative preparing volunteers for effective community service through skill-building and teamwork."
   },
   {
     date: "2025",
     title: "Executive Committee Member – ByteBash Version 2",
-    subtitle:"Department of ICT, Uva Wellassa University",
-    description: "Supported a monthly tech-talk series to share knowledge, discuss emerging technologies, and enhance students’ technical and communication skills."
+    subtitle: "Department of ICT, Uva Wellassa University",
+    description: "Supported a monthly tech-talk series designed to share knowledge, discuss emerging technologies, and enhance students’ technical and communication skills."
   }
 ];
 
