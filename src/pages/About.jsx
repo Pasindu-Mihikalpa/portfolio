@@ -1,6 +1,7 @@
 import { Download } from 'lucide-react';
 import Button from '../components/ui/Button';
 import PropTypes from 'prop-types';
+import profileImage from '../assets/my_profile_2.png';
 
 export default function About() {
   return (
@@ -28,7 +29,7 @@ export default function About() {
               {/* Image Frame/Border Effect */}
               <div className="border-4 border-[#1f2937] p-1 bg-dark shadow-2xl rounded-sm">
                 <img 
-                  src="src\assets\my_profile_2.png" // REPLACE with your actual photo
+                  src={profileImage}
                   alt="Pasindu Mihikalpa" 
                   className="object-cover w-full h-auto transition-all duration-500 max-w-100 filter grayscale hover:grayscale-0"
                 />
