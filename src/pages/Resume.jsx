@@ -126,59 +126,46 @@ ResumeSection.propTypes = {
 // --- DATA ---
 const experienceData = [
   {
-    date: "2024",
-    title: "Project Chairperson – Akurata Rukulak 2024",
-    subtitle: "Department of Information and Communication Technology, Uva Wellassa University of Sri Lanka",
-    badge: "Volunteering",
-    description: "Annual CSR initiative by ICT undergraduates supporting underprivileged schools in the Badulla district through educational and resource-based assistance."
-  },
-  {
-    date: "2024 – Present",
-    title: "Member, Board of Directors",
-    subtitle: "Leo Club of Uva Wellassa University",
-    badge: "Volunteering",
-    description: "Serving on the board to drive community service initiatives and chapter governance."
-  },
-  {
-    date: "2024 – 2025",
-    title: "Editorial Crew Member (Leostic Year 2024/2025)",
-    subtitle: "Leo Club of Uva Wellassa University",
-    badge: "Volunteering",
-    description: "Contributed to content writing and supported maintenance of the LEO TIMES newsletter."
-  },
-  {
-    date: "2025 – 2026",
+    date: "2025 - 2026",
     title: "Joint Secretary (Leostic Year 2025/2026)",
     subtitle: "Leo Club of Uva Wellassa University",
     badge: "Volunteering",
-    description: "Managed records, official correspondence, and meeting minutes to ensure effective communication and organized administration."
+    description: "Manages records, correspondence, and meeting minutes, ensuring smooth communication and organized administration within the organization."
   },
   {
-    date: "2025",
-    title: "Project Chairperson – Melodic Mind",
-    subtitle: "Leo Club of Uva Wellassa University & Leo Club of S. Thomas’ College, Bandarawela",
+    date: "2024 - 2025",
+    title: "Project Chairperson - 'Melodic Mind'",
+    subtitle: "Leo Club of Uva Wellassa University",
     badge: "Volunteering",
-    description: "Led a collaborative mental well-being project addressing academic stress through professional counseling and music therapy."
+    description: "Led a collaborative mental well-being project addressing academic stress through counselling and music therapy."
   },
   {
-    date: "2024 – Present",
-    title: "Member",
-    subtitle: "IEEE Uva Wellassa University Student Branch",
+    date: "2024 - 2025",
+    title: "Editorial Crew Member",
+    subtitle: "Leo Club of Uva Wellassa University",
     badge: "Volunteering",
-    description: "Active member contributing to leadership development and community service projects."
+    description: "Contributed to content writing and supported the maintenance of the 'LEO TIMES' newsletter."
   },
   {
-    date: "2025",
-    title: "Organizing Committee Member – Volunteer Training Session",
-    subtitle: "IEEE Uva Wellassa University Student Branch",
-    badge: "Volunteering",
-    description: "Contributed to a leadership development initiative preparing volunteers for effective community service through skill-building and teamwork."
-  },
-  {
-    date: "2025",
-    title: "Executive Committee Member – ByteBash Version 2",
+    date: "2024",
+    title: "Project Chairperson - 'Akurata Rukulak'",
     subtitle: "Department of ICT, Uva Wellassa University",
-    description: "Supported a monthly tech-talk series designed to share knowledge, discuss emerging technologies, and enhance students’ technical and communication skills."
+    badge: "Volunteering",
+    description: "Led an annual CSR project by ICT undergraduates supporting underprivileged schools in Badulla through educational resources."
+  },
+  {
+    date: "2024 - Present",
+    title: "Executive Committee Member - 'ByteBash V2'",
+    subtitle: "IEEE Student Branch - UWU",
+    badge: "Volunteering",
+    description: "Organized a monthly tech-talk series bringing students together to share knowledge and discuss emerging technologies."
+  },
+  {
+    date: "2024",
+    title: "Organizing Committee Member - Volunteer Training Session",
+    subtitle: "IEEE Student Branch - UWU",
+    badge: "Volunteering",
+    description: "Contributed to a leadership development initiative focused on preparing volunteers for effective community service."
   }
 ];
 
