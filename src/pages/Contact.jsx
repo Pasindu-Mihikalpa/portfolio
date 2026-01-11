@@ -11,7 +11,7 @@ export default function Contact() {
     e.preventDefault();
     setIsSending(true);
 
-    emailjs.sendForm('service_u5yittr', 'template_i5b3m43', form.current, 'YOUR_PUBLIC_KEY')
+    emailjs.sendForm('service_u5yittr', 'template_cx8pqby', form.current, 'cPAF1Ql3zsSJWY7ik')
       .then((result) => {
           alert("Message sent successfully!");
           setIsSending(false);
