@@ -40,11 +40,11 @@ export default function Resume() {
   );
 }
 
-// --- Reusable Section Component (Handles the "Show 2" Logic) ---
+// --- Reusable Section Component ---
 const ResumeSection = ({ title, icon, items }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Logic: Show all if expanded, otherwise show only first 2
+  // Show only first 2 items unless expanded
   const visibleItems = isExpanded ? items : items.slice(0, 2);
   const hiddenCount = items.length - 2;
 
@@ -67,8 +67,9 @@ const ResumeSection = ({ title, icon, items }) => {
 
       {/* Timeline List */}
       <div className="pb-4 ml-3 space-y-10 border-l-2 border-gray-800">
-        {visibleItems.map((item) => (
-          <div key={`${item.title}-${item.date}`} className="relative pl-8">
+        {visibleItems.map((item, index) => (
+          // Using index as key fallback since dates might duplicate
+          <div key={`${item.title}-${index}`} className="relative pl-8">
             {/* Timeline Dot */}
             <span className="absolute -left-2.25 top-1 w-4 h-4 rounded-full border-2 border-cyan-400 bg-[#050A15]"></span>
             
@@ -89,9 +90,9 @@ const ResumeSection = ({ title, icon, items }) => {
             <h4 className="mb-2 font-medium text-white">{item.subtitle}</h4>
             
             {/* Description */}
-            <p className="text-sm leading-relaxed text-gray-400">
+            <div className="text-sm leading-relaxed text-gray-400 whitespace-pre-line">
               {item.description}
-            </p>
+            </div>
           </div>
         ))}
       </div>
@@ -117,7 +118,8 @@ ResumeSection.propTypes = {
       date: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       subtitle: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
+      // Description can now be a String OR a React Element (JSX)
+      description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
       badge: PropTypes.string,
     })
   ).isRequired,
@@ -130,55 +132,51 @@ const experienceData = [
     title: "Project Chairperson – Akurata Rukulak 2024",
     subtitle: "Department of Information and Communication Technology, Uva Wellassa University of Sri Lanka",
     badge: "Volunteering",
-    description: "Annual CSR initiative by ICT undergraduates supporting underprivileged schools in the Badulla district through educational and resource-based assistance."
+    description: (
+      <>
+        • Organized by the Department of Information and Communication Technology, Faculty of Technological Studies, Uva Wellassa University of Sri Lanka.
+        <br /><br />
+        • Akurata Rukulak is an annual CSR project by ICT undergraduates of Uva Wellassa University, supporting underprivileged schools in Badulla.
+      </>
+    )
   },
   {
     date: "2024 – Present",
     title: "Member, Board of Directors",
     subtitle: "Leo Club of Uva Wellassa University",
     badge: "Volunteering",
-    description: "Serving on the board to drive community service initiatives and chapter governance."
-  },
-  {
-    date: "2024 – 2025",
-    title: "Editorial Crew Member (Leostic Year 2024/2025)",
-    subtitle: "Leo Club of Uva Wellassa University",
-    badge: "Volunteering",
-    description: "Contributed to content writing and supported maintenance of the LEO TIMES newsletter."
-  },
-  {
-    date: "2025 – 2026",
-    title: "Joint Secretary (Leostic Year 2025/2026)",
-    subtitle: "Leo Club of Uva Wellassa University",
-    badge: "Volunteering",
-    description: "Managed records, official correspondence, and meeting minutes to ensure effective communication and organized administration."
-  },
-  {
-    date: "2025",
-    title: "Project Chairperson – Melodic Mind",
-    subtitle: "Leo Club of Uva Wellassa University & Leo Club of S. Thomas’ College, Bandarawela",
-    badge: "Volunteering",
-    description: "Led a collaborative mental well-being project addressing academic stress through professional counseling and music therapy."
+    description: (
+      <>
+        • <strong>Editorial Crew Member (Leostic Year 2024/2025)</strong>
+        <br />
+        Content Writing for Newsletter and support in maintaining LEO TIMES newsletter.
+        <br /><br />
+        • <strong>Joint Secretary (Leostic Year 2025/2026)</strong>
+        <br />
+        Manages records, correspondence, and meeting minutes, ensuring smooth communication and organized administration within the organization.
+        <br /><br />
+        • <strong>Project Chairperson – ‘Project Melodic Mind’</strong>
+        <br />
+        A collaborative mental well-being project by the Leo Club of Uva Wellassa University and the Leo Club of S. Thomas’ College, Bandarawela, addressing academic stress through counselling and music therapy.
+      </>
+    )
   },
   {
     date: "2024 – Present",
     title: "Member",
     subtitle: "IEEE Uva Wellassa University Student Branch",
     badge: "Volunteering",
-    description: "Active member contributing to leadership development and community service projects."
-  },
-  {
-    date: "2025",
-    title: "Organizing Committee Member – Volunteer Training Session",
-    subtitle: "IEEE Uva Wellassa University Student Branch",
-    badge: "Volunteering",
-    description: "Contributed to a leadership development initiative preparing volunteers for effective community service through skill-building and teamwork."
-  },
-  {
-    date: "2025",
-    title: "Executive Committee Member – ByteBash Version 2",
-    subtitle: "Department of ICT, Uva Wellassa University",
-    description: "Supported a monthly tech-talk series designed to share knowledge, discuss emerging technologies, and enhance students’ technical and communication skills."
+    description: (
+      <>
+        • <strong>Organizing Committee Member - Volunteer Training Session</strong>
+        <br />
+        A leadership development initiative focused on preparing volunteers for effective community service through skill-building and teamwork.
+        <br /><br />
+        • <strong>Executive Committee Member - Project: ByteBash, Version 2</strong>
+        <br />
+        A monthly tech-talk series that brings together students to share knowledge, discuss emerging technologies, and strengthen practical skills through interactive sessions.
+      </>
+    )
   }
 ];
 
@@ -195,7 +193,6 @@ const educationData = [
     subtitle: "National Vocational Training Institute- Abegoda",
     description: "National Diploma bridging software engineering and creative design. focused on building scalable web applications, database administration, and quality assurance standards."
   },
-  // Dummy Data to test the "Show More" functionality
   {
     date: "2020",
     title: "G.C.E Advanced Level",
