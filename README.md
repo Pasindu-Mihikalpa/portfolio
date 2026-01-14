@@ -1,16 +1,29 @@
-# React + Vite
+# Pasindu Mihikalpa - Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive personal portfolio website built to showcase my projects, skills, and experience in Business Intelligence, Data Science, and Software Development.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** [https://pasindumihikalpa.dev/](https://pasindumihikalpa.dev/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## React Compiler
+* **Frontend:** React.js + Vite
+* **Styling:** CSS / Bootstrap (Davis Theme)
+* **Email Service:** EmailJS (for Contact Form)
+* **Deployment:** GitHub Pages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📨 EmailJS Integration
 
-## Expanding the ESLint configuration
+The "Contact Me" form on this portfolio is powered by **EmailJS**, allowing users to send emails directly from the frontend without a backend server.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### How it Works:
+1.  The form captures the User's Name, Email, Subject, and Message.
+2.  **EmailJS** processes the data and sends it to my personal email inbox.
+3.  An auto-reply is optionally sent back to the user confirming receipt.
+
+### Configuration:
+To run this locally, you will need your own EmailJS credentials. Create a `.env` file in the root directory and add:
+
+```env
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
