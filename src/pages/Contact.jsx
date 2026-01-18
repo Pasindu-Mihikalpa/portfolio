@@ -1,135 +1,191 @@
-import { useRef, useState } from 'react';
-import { Mail, MapPin, Phone, Send, Loader2 } from 'lucide-react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import PropTypes from 'prop-types';
+import { Mail, MapPin, Phone, Send, CheckCircle, X, Loader2 } from 'lucide-react';
 
 export default function Contact() {
   const form = useRef();
-  const [isSending, setIsSending] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
-    setIsSending(true);
+    setIsLoading(true);
 
-    emailjs.sendForm('service_u5yittr', 'template_cx8pqby', form.current, 'cPAF1Ql3zsSJWY7ik')
+    // Using your REAL credentials
+    emailjs.sendForm(
+      'service_u5yittr',   // Service ID
+      'template_cx8pqby',  // Template ID
+      form.current, 
+      'cPAF1Ql3zsSJWY7ik'  // Public Key
+    )
       .then((result) => {
-          alert("Message sent successfully!");
-          setIsSending(false);
-          e.target.reset();
+          console.log(result.text);
+          setIsLoading(false);
+          setShowSuccessModal(true); // Show success popup
+          form.current.reset();
       }, (error) => {
-          alert("Failed to send message. Please try again.");
           console.log(error.text);
-          setIsSending(false);
+          setIsLoading(false);
+          alert("Failed to send message. Please check your internet connection.");
       });
   };
 
   return (
-    <div className="py-12 mb-12 animate-fade-in-up">
-      <div className="container max-w-6xl px-6 mx-auto">
-        
-        {/* Page Header */}
-        <div className="relative mb-16 text-center">
-          <h1 className="relative z-10 inline-block text-4xl font-bold text-white uppercase md:text-5xl">
-            Contact Me
-            <span className="block w-full h-1 mt-2 rounded-full bg-cyan-400"></span>
-          </h1>
-          <span className="absolute z-0 text-6xl font-bold tracking-widest text-gray-800 -translate-x-1/2 -translate-y-1/2 select-none top-1/2 left-1/2 md:text-8xl opacity-20 whitespace-nowrap">
-            GET IN TOUCH
-          </span>
-        </div>
+    <div className="container px-6 mx-auto">
+      
+      {/* --- SECTION HEADER --- */}
+      <div className="mb-16 text-center">
+        <h2 className="relative z-10 inline-block text-4xl font-bold text-white md:text-5xl">
+          GET IN <span className="text-cyan-400">TOUCH</span>
+          <span className="block w-full h-1 mt-2 rounded-full bg-cyan-400"></span>
+        </h2>
+        <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl font-bold text-[#1f2937] opacity-30 select-none z-0">
+          CONTACT
+        </span>
+      </div>
 
-        <div className="grid items-start gap-12 md:grid-cols-2">
-          
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="mb-4 text-3xl font-bold text-white">Let's Talk About Your Project</h2>
-              <p className="leading-relaxed text-gray-400">
-                I am currently seeking internship opportunities. Feel free to reach out!
-              </p>
+      <div className="grid gap-12 lg:grid-cols-2">
+        
+        {/* LEFT COLUMN: Contact Info */}
+        <div className="space-y-8">
+          <h3 className="text-3xl font-bold text-white">Let's Talk About Your Project</h3>
+          <p className="text-gray-400">
+            I am currently seeking internship opportunities. Feel free to reach out!
+          </p>
+
+          <div className="space-y-6">
+            {/* Phone */}
+            <div className="flex items-center gap-4 group">
+              <div className="p-4 transition-colors rounded-full bg-gray-800/50 text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black">
+                <Phone size={24} />
+              </div>
+              <div>
+                <h4 className="text-sm font-medium text-gray-400">Phone</h4>
+                <p className="text-lg font-bold text-white">+94 74 091 5987</p>
+              </div>
             </div>
-            <div className="space-y-6">
-              <ContactItem icon={<Phone size={20} />} title="Phone" value="+94 74 091 5987" />
-              <ContactItem icon={<Mail size={20} />} title="Email" value="pmihikalpa2022@gmail.com" />
-              <ContactItem icon={<MapPin size={20} />} title="Location" value="Sri Lanka" />
+
+            {/* Email */}
+            <div className="flex items-center gap-4 group">
+              <div className="p-4 transition-colors rounded-full bg-gray-800/50 text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black">
+                <Mail size={24} />
+              </div>
+              <div>
+                <h4 className="text-sm font-medium text-gray-400">Email</h4>
+                <p className="text-lg font-bold text-white">pmihikalpa2022@gmail.com</p>
+              </div>
+            </div>
+
+            {/* Location */}
+            <div className="flex items-center gap-4 group">
+              <div className="p-4 transition-colors rounded-full bg-gray-800/50 text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black">
+                <MapPin size={24} />
+              </div>
+              <div>
+                <h4 className="text-sm font-medium text-gray-400">Location</h4>
+                <p className="text-lg font-bold text-white">Sri Lanka</p>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Contact Form */}
-          <form ref={form} onSubmit={sendEmail} className="space-y-4">
-            <div className="space-y-2">
-              <input 
-                type="text" 
-                name="from_name"
-                placeholder="Your Name" 
-                className="w-full bg-[#101010] border border-[#1f2937] text-white p-4 rounded-lg focus:outline-none focus:border-cyan-400 transition-colors"
-                required
-              />
-            </div>
+        {/* RIGHT COLUMN: Form */}
+        <form ref={form} onSubmit={sendEmail} className="space-y-6">
+          <div className="grid gap-6 md:grid-cols-2">
             
-            <div className="space-y-2">
-              <input 
-                type="email" 
-                name="from_email"
-                placeholder="Your Email" 
-                className="w-full bg-[#101010] border border-[#1f2937] text-white p-4 rounded-lg focus:outline-none focus:border-cyan-400 transition-colors"
-                required
-              />
+            {/* Name Input */}
+            <input 
+              type="text" 
+              name="from_name" 
+              placeholder="Your Name" 
+              required
+              className="w-full p-4 text-white transition-colors border border-gray-800 bg-gray-900/50 rounded-xl focus:border-cyan-400 focus:outline-none"
+            />
+            
+            {/* Email Input */}
+            <input 
+              type="email" 
+              name="from_email" 
+              placeholder="Your Email" 
+              required
+              className="w-full p-4 text-white transition-colors border border-gray-800 bg-gray-900/50 rounded-xl focus:border-cyan-400 focus:outline-none"
+            />
+          </div>
+          
+          {/* Subject Input */}
+          <input 
+            type="text" 
+            name="subject" 
+            placeholder="Subject" 
+            required
+            className="w-full p-4 text-white transition-colors border border-gray-800 bg-gray-900/50 rounded-xl focus:border-cyan-400 focus:outline-none"
+          />
+          
+          {/* Message Input */}
+          <textarea 
+            name="message" 
+            rows="6" 
+            placeholder="Message" 
+            required
+            className="w-full p-4 text-white transition-colors border border-gray-800 resize-none bg-gray-900/50 rounded-xl focus:border-cyan-400 focus:outline-none"
+          ></textarea>
+
+          {/* LOADING BUTTON */}
+          <button 
+            type="submit" 
+            disabled={isLoading}
+            className="flex items-center gap-2 px-8 py-4 font-bold text-black transition-transform rounded-full bg-cyan-400 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isLoading ? (
+              <>
+                Sending...
+                <Loader2 size={18} className="animate-spin" /> {/* Spinning Icon */}
+              </>
+            ) : (
+              <>
+                Send Message
+                <Send size={18} />
+              </>
+            )}
+          </button>
+        </form>
+
+      </div>
+
+      {/* --- SUCCESS MODAL POPUP --- */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in-up">
+          <div className="relative w-full max-w-md p-8 text-center bg-[#1f2937] border border-gray-700 rounded-2xl shadow-2xl transform transition-all scale-100">
+            
+            <button 
+              onClick={() => setShowSuccessModal(false)}
+              className="absolute p-2 text-gray-400 transition-colors top-4 right-4 hover:text-white"
+            >
+              <X size={24} />
+            </button>
+
+            <div className="flex justify-center mb-6">
+              <div className="p-4 rounded-full bg-green-500/20">
+                <CheckCircle className="w-16 h-16 text-green-500 animate-bounce" />
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <input 
-                type="text" 
-                name="subject"
-                placeholder="Subject" 
-                className="w-full bg-[#101010] border border-[#1f2937] text-white p-4 rounded-lg focus:outline-none focus:border-cyan-400 transition-colors"
-                required
-              />
-            </div>
-
-            <div className="space-y-2">
-              <textarea 
-                name="message"
-                rows="5"
-                placeholder="Message" 
-                className="w-full bg-[#101010] border border-[#1f2937] text-white p-4 rounded-lg focus:outline-none focus:border-cyan-400 transition-colors resize-none"
-                required
-              ></textarea>
-            </div>
+            <h3 className="mb-2 text-2xl font-bold text-white">Message Sent!</h3>
+            <p className="mb-8 text-gray-400">
+              Thank you for reaching out. I will get back to you as soon as possible.
+            </p>
 
             <button 
-              type="submit" 
-              disabled={isSending}
-              className="px-8 py-4 border-2 border-[#2f3b4b] text-white font-bold rounded-full hover:border-cyan-400 hover:text-cyan-400 transition-colors flex items-center gap-2 justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={() => setShowSuccessModal(false)}
+              className="w-full py-3 font-bold text-white transition-colors bg-green-600 rounded-xl hover:bg-green-700"
             >
-              {isSending ? (
-                <>Sending... <Loader2 size={18} className="animate-spin"/></>
-              ) : (
-                <>Send Message <Send size={18} /></>
-              )}
+              Close
             </button>
-          </form>
 
+          </div>
         </div>
-      </div>
+      )}
+
     </div>
   );
 }
-
-const ContactItem = ({ icon, title, value }) => (
-  <div className="flex items-center gap-4">
-    <div className="w-12 h-12 rounded-full h flex items-center justify-center text-cyan-400 border border-[#1f2937] shadow-sm">
-      {icon}
-    </div>
-    <div>
-      <h4 className="text-lg font-bold text-white">{title}</h4>
-      <p className="text-sm text-gray-400">{value}</p>
-    </div>
-  </div>
-);
-
-ContactItem.propTypes = {
-  icon: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-};

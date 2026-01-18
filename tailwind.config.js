@@ -7,15 +7,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#111111',   // Dark Background
-        surface: '#1f1f1f',      // Slightly lighter for cards
-        primary: '#3b82f6',      // Vibrant Blue (or change to #f59e0b for Gold)
-        textMain: '#ffffff',     // White text
-        textSub: '#a3a3a3',      // Gray text for subtitles
+        // I added these so you can use 'bg-dark' or 'text-cyan' if you want custom names
+        dark: '#050A15', 
+        cyan: {
+          DEFAULT: '#22d3ee', // Matches cyan-400
+          glow: '#22d3ee',
+        }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'], // Clean modern font
-      }
+        sans: ['Inter', 'sans-serif'],
+      },
     },
   },
   plugins: [],

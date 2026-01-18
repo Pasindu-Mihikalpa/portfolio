@@ -1,65 +1,75 @@
-import { Github, ExternalLink, Linkedin } from 'lucide-react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const ProjectCard = ({ project }) => {
-  // Helper to get the right icon based on link type
-  const getIcon = (type) => {
-    switch (type) {
-      case 'github': return <Github size={20} />;
-      case 'external': return <ExternalLink size={20} />;
-      case 'linkedin': return <Linkedin size={20} />;
-      default: return <ExternalLink size={20} />;
-    }
-  };
-
   return (
-    <div className="group relative rounded-2xl overflow-hidden bg-dark-card border border-[#222] hover:border-cyan-400 transition-all duration-300 h-87">
+    <div className="group relative h-[300px] rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-black/50 border border-[#222]">
       
-      {/* 1. Project Image */}
+      {/* Background Image */}
       <img 
         src={project.image} 
         alt={project.title} 
         className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" 
       />
 
-      {/* 2. Dark Overlay (Always visible on mobile, hover on desktop) */}
-      <div className="absolute inset-0 flex flex-col justify-end p-6 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black via-black/80 to-transparent group-hover:opacity-100">
+      {/* Hover Overlay */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center transition-opacity duration-300 opacity-0 bg-cyan-900/90 group-hover:opacity-100">
         
-        {/* Project Info */}
-        <div className="transition-transform duration-300 transform translate-y-4 group-hover:translate-y-0">
-          <span className="block mb-2 text-xs font-bold tracking-wider uppercase text-cyan-400">
-            {project.category}
-          </span>
-          <h3 className="mb-4 text-2xl font-bold text-white">
-            {project.title}
-          </h3>
+        {/* Icon Slides Down */}
+        <div className="transition-transform duration-300 transform -translate-y-4 group-hover:translate-y-0">
+          {project.mainIcon}
+        </div>
 
-          {/* Links Section */}
-          <div className="flex gap-4 mt-2">
-            {project.links.length > 0 ? (
-              project.links.map((link, index) => (
-                <a 
-                  key={index}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 text-white transition-colors rounded-full bg-white/10 hover:bg-cyan-500 hover:text-white backdrop-blur-sm"
-                  title={link.type}
-                >
-                  {getIcon(link.type)}
-                </a>
-              ))
-            ) : (
-              // Fallback if no links exist
-              <span className="inline-block px-4 py-2 text-sm font-bold text-gray-400 bg-gray-800 border border-gray-700 rounded-full">
-                Coming Soon
-              </span>
-            )}
-          </div>
+        {/* Title Slides Up */}
+        <h3 className="mb-1 text-2xl font-bold text-white transition-transform duration-300 delay-75 transform translate-y-4 group-hover:translate-y-0">
+          {project.title}
+        </h3>
+        
+        {/* Category Slides Up */}
+        <span className="text-sm font-medium transition-transform duration-300 delay-100 transform translate-y-4 text-cyan-100 group-hover:translate-y-0">
+          {project.category}
+        </span>
+
+        {/* Links Slide Up */}
+        <div className="flex gap-4 mt-6 transition-all duration-300 delay-150 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+          {project.links.length > 0 ? (
+            project.links.map((link, index) => (
+              <a 
+                key={index}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 text-gray-900 transition-all bg-white rounded-full shadow-lg hover:bg-black hover:text-cyan-400 hover:scale-110"
+              >
+                {link.icon}
+              </a>
+            ))
+          ) : (
+            <span className="px-3 py-1 text-xs border rounded-full bg-black/30 text-cyan-100 border-cyan-500/30">
+              Preview Only
+            </span>
+          )}
         </div>
 
       </div>
     </div>
   );
+};
+
+ProjectCard.propTypes = {
+  project: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    mainIcon: PropTypes.node.isRequired,
+    image: PropTypes.string.isRequired,
+    links: PropTypes.arrayOf(
+      PropTypes.shape({
+        icon: PropTypes.node,
+        url: PropTypes.string.isRequired,
+      })
+    ),
+  }).isRequired,
 };
 
 export default ProjectCard;
