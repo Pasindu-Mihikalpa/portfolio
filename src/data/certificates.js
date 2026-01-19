@@ -1,0 +1,50 @@
+export const certificates = [
+  {
+    id: 1,
+    title: "Collaboration",
+    issuer: "SLASSCOM Academy",
+    date: "2023",
+    logo: "https://logo.clearbit.com/slasscom.lk",
+    certificateUrl: "https://via.placeholder.com/800x600?text=Collaboration+Certificate",
+  },
+  {
+    id: 2,
+    title: "Presence",
+    issuer: "SLASSCOM Academy",
+    date: "2023",
+    logo: "https://logo.clearbit.com/slasscom.lk",
+    certificateUrl: "https://via.placeholder.com/800x600?text=Presence+Certificate",
+  },
+  {
+    id: 3,
+    title: "Presentation Skills",
+    issuer: "SLASSCOM Academy",
+    date: "2023",
+    logo: "https://logo.clearbit.com/slasscom.lk",
+    certificateUrl: "https://via.placeholder.com/800x600?text=Presentation+Skills+Certificate",
+  },
+  {
+    id: 4,
+    title: "Running Effective Meetings",
+    issuer: "SLASSCOM Academy",
+    date: "2023",
+    logo: "https://logo.clearbit.com/slasscom.lk",
+    certificateUrl: "https://via.placeholder.com/800x600?text=Running+Effective+Meetings+Certificate",
+  },
+  {
+    id: 5,
+    title: "Agility",
+    issuer: "SLASSCOM Academy",
+    date: "2023",
+    logo: "https://logo.clearbit.com/slasscom.lk",
+    certificateUrl: "https://via.placeholder.com/800x600?text=Agility+Certificate",
+  },
+  {
+    id: 6,
+    title: "Virtual Teams",
+    issuer: "SLASSCOM Academy",
+    date: "2023",
+    logo: "https://logo.clearbit.com/slasscom.lk",
+    certificateUrl: "https://via.placeholder.com/800x600?text=Virtual+Teams+Certificate",
+  }
+];
