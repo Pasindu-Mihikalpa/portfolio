@@ -4,7 +4,6 @@ import profileImage from '../assets/my_profile.png';
 
 // Import Section Components
 import Skills from './Skills'; 
-import Certificates from './Certificates';
 import About from './About';
 import Resume from './Resume';
 import Projects from './Projects';
@@ -125,18 +124,9 @@ export default function Home() {
       {/* --- SEPARATOR --- */}
       <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
 
-      <section id="certificates">
-        <Certificates />
-      </section>
-
-      {/* --- SEPARATOR --- */}
-      <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
-
       <section id="resume">
         <Resume />
       </section>
-
-      
 
       {/* --- SEPARATOR --- */}
       <div className="py-12">
