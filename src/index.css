@@ -12,6 +12,11 @@
     color: white;
     font-family: 'Inter', sans-serif;
   }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Height of sticky nav */
+  }
 }
 
 @layer utilities {

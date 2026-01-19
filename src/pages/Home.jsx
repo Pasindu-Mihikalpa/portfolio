@@ -2,6 +2,9 @@ import React from 'react';
 import { Linkedin, Github, X, Mail } from 'lucide-react';
 import profileImage from '../assets/my_profile.png';
 
+// Import Navigation Component
+import Navigation from '../components/Navigation';
+
 // Import Section Components
 import Skills from './Skills'; 
 import About from './About';
@@ -14,6 +17,9 @@ export default function Home() {
     // Main Container
     <div className="relative w-full overflow-hidden">
       
+      {/* --- NAVIGATION --- */}
+      <Navigation />
+      
       {/* --- GLOBAL BACKGROUND (kept behind all content) --- */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <div 
@@ -25,7 +31,7 @@ export default function Home() {
 
 
       {/* --- SECTION 1: HERO (Profile Header) --- */}
-      <section id="home" className="min-h-[calc(100vh-80px)] flex items-center py-12">
+      <section id="home" className="min-h-[calc(100vh-80px)] flex items-center py-12 scroll-mt-20">
         <div className="container relative z-10 px-6 mx-auto">
           <div className="grid items-center gap-12 md:grid-cols-2">
             
@@ -110,32 +116,37 @@ export default function Home() {
 
       {/* --- OTHER SECTIONS --- */}
       
-      <section id="about">
+      <section id="about" className="scroll-mt-20">
         <About />
       </section>
 
       {/* --- SEPARATOR --- */}
       <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
       
-      <section id="skills">
+      <section id="skills" className="scroll-mt-20">
         <Skills />
       </section>
 
       {/* --- SEPARATOR --- */}
       <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
 
-      <section id="resume">
+      <section id="resume" className="scroll-mt-20">
         <Resume />
       </section>
 
-      
+      {/* --- SEPARATOR --- */}
+      <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+
+      <section id="projects" className="scroll-mt-20">
+        <Projects />
+      </section>
 
       {/* --- SEPARATOR --- */}
       <div className="py-12">
         <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
       </div>
 
-      <section id="contact" className="pb-20">
+      <section id="contact" className="pb-20 scroll-mt-20">
         <Contact />
       </section>
 
