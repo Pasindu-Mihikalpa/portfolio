@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
-  const navLinks = [
+  const navLinks = useMemo(() => [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'resume', label: 'Resume' },
     { id: 'projects', label: 'Projects' },
     { id: 'contact', label: 'Contact' },
-  ];
+  ], []);
 
   // Handle smooth scroll to section
   const scrollToSection = (sectionId) => {
@@ -42,7 +42,7 @@ const Navigation = () => {
     handleScroll(); // Call once on mount
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navLinks]);
 
   return (
     <nav className="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-md border-b border-gray-800">
