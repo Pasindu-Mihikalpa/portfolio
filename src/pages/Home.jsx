@@ -6,6 +6,7 @@ import profileImage from '../assets/my_profile.png';
 import Skills from './Skills'; 
 import About from './About';
 import Resume from './Resume';
+import Certificates from './Certificates';
 import Projects from './Projects';
 import Contact from './Contact';
 
@@ -126,6 +127,13 @@ export default function Home() {
 
       <section id="resume">
         <Resume />
+      </section>
+
+      {/* --- SEPARATOR --- */}
+      <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+
+      <section id="certificates">
+        <Certificates />
       </section>
 
       
