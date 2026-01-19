@@ -55,7 +55,7 @@ export default function Contact() {
 
           <div className="space-y-6">
             {/* Phone */}
-            <div className="flex items-center gap-4 group">
+            <div className="flex items-center gap-4 group">  
               <div className="p-4 transition-colors rounded-full bg-gray-800/50 text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black">
                 <Phone size={24} />
               </div>
@@ -72,7 +72,7 @@ export default function Contact() {
               </div>
               <div>
                 <h4 className="text-sm font-medium text-gray-400">Email</h4>
-                <p className="text-lg font-bold text-white">pmihikalpa2022@gmail.com</p>
+                <p className="text-lg font-bold text-white">pasindumihikalpa@outlook.com</p>
               </div>
             </div>
 
