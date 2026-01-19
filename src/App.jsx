@@ -11,7 +11,6 @@ import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import ComingSoon from './pages/ComingSoon';
 import Skills from './pages/Skills';
-import Certificates from './pages/Certificates'; 
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -42,7 +41,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />}/>
           <Route path="/skills" element={<Skills />} />
-          <Route path="/certificates" element={<Certificates />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/blog" element={<Blog />} />
