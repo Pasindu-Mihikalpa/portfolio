@@ -81,7 +81,7 @@ export default function Home() {
                   <X size={24} />
                 </a>
                 <a 
-                  href="mailto:pmihikalpa2022@gmail.com" 
+                  href="mailto:pasindumihikalpa@outlook.com" 
                   className="p-4 border-2 border-[#2f3b4b] text-white rounded-full hover:border-cyan-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"
                   aria-label="Email"
                 >
@@ -96,7 +96,7 @@ export default function Home() {
                 <img 
                   src={profileImage} 
                   alt="Pasindu Mihikalpa" 
-                  className="w-full max-w-[480px] h-auto object-cover rounded-[30px] filter grayscale-[30%] group-hover:grayscale-0 transform group-hover:scale-[1.02] transition-all duration-500 ease-out"
+                  className="w-full max-w-[480px] h-auto object-cover rounded-[30px] filter grayscale-[30%] group-hover:grayscale-0 transform group-hover:scale-[1.02] transition-all duration-500 ease-in-out"
                 />
               </div>
             </div>
