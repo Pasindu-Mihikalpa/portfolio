@@ -3,7 +3,8 @@ import { Linkedin, Github, X, Mail } from 'lucide-react';
 import profileImage from '../assets/my_profile.png';
 
 // Import Section Components
-import Skills from './Skills'; 
+import Skills from './Skills';
+import Certificates from './Certificates';
 import About from './About';
 import Resume from './Resume';
 import Projects from './Projects';
@@ -14,18 +15,38 @@ export default function Home() {
     // Main Container
     <div className="relative w-full overflow-hidden">
       
-      {/* --- GLOBAL BACKGROUND (kept behind all content) --- */}
+      {/* --- GLOBAL BACKGROUND with Motion Effect --- */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        {/* Base gradient for depth */}
+        <div className="absolute inset-0 bg-linear-to-br from-gray-900 via-black to-black"></div>
+
+        {/* Background image with subtle zoom/pan motion */}
         <div 
-          className="absolute inset-0 bg-center bg-no-repeat bg-cover animate-float" 
-          style={{ backgroundImage: "url('/background_img.jpg')" }}
+          className="absolute inset-0 animate-slow-zoom" 
+          style={{ 
+            backgroundImage: "url('/background_img.jpg')",
+            backgroundAttachment: 'fixed',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
         ></div>
-        <div className="absolute inset-0 bg-black/70"></div>
+
+        {/* Dim overlay to keep text readable while showing the image */}
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        {/* Cyan glow (top-right) */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(ellipse at 80% 15%, rgba(6, 182, 212, 0.12), transparent 65%)'
+        }}></div>
+
+        {/* Blue glow (bottom-left) */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(ellipse at 15% 85%, rgba(59, 130, 246, 0.08), transparent 70%)'
+        }}></div>
       </div>
-
-
+      
       {/* --- SECTION 1: HERO (Profile Header) --- */}
-      <section id="home" className="min-h-[calc(100vh-80px)] flex items-center py-12">
+      <section id="home" className="relative min-h-[calc(100vh-80px)] flex items-center py-12">
         <div className="container relative z-10 px-6 mx-auto">
           <div className="grid items-center gap-12 md:grid-cols-2">
             
@@ -37,7 +58,7 @@ export default function Home() {
                 </h3>
                 <h1 className="text-5xl font-black leading-tight tracking-wide text-white md:text-7xl">
                   Pasindu <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500">
                     Mihikalpa
                   </span>
                 </h1>
@@ -96,7 +117,7 @@ export default function Home() {
                 <img 
                   src={profileImage} 
                   alt="Pasindu Mihikalpa" 
-                  className="w-full max-w-[480px] h-auto object-cover rounded-[30px] filter grayscale-[30%] group-hover:grayscale-0 transform group-hover:scale-[1.02] transition-all duration-500 ease-out"
+                  className="w-full max-w-120 h-auto object-cover rounded-[30px] filter grayscale-30 group-hover:grayscale-0 transform group-hover:scale-[1.02] transition-all duration-500 ease-out"
                 />
               </div>
             </div>
@@ -106,7 +127,7 @@ export default function Home() {
       </section>
 
       {/* --- SEPARATOR --- */}
-      <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+      <div className="h-px bg-linear-to-r from-transparent via-cyan-400 to-transparent"></div>
 
       {/* --- OTHER SECTIONS --- */}
       
@@ -115,14 +136,21 @@ export default function Home() {
       </section>
 
       {/* --- SEPARATOR --- */}
-      <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+      <div className="h-px bg-linear-to-r from-transparent via-cyan-400 to-transparent"></div>
       
       <section id="skills">
         <Skills />
       </section>
 
       {/* --- SEPARATOR --- */}
-      <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+      <div className="h-px bg-linear-to-r from-transparent via-cyan-400 to-transparent"></div>
+
+      <section id="certificates">
+        <Certificates />
+      </section>
+
+      {/* --- SEPARATOR --- */}
+      <div className="h-px bg-linear-to-r from-transparent via-cyan-400 to-transparent"></div>
 
       <section id="resume">
         <Resume />
@@ -130,7 +158,7 @@ export default function Home() {
 
       {/* --- SEPARATOR --- */}
       <div className="py-12">
-        <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+        <div className="h-px bg-linear-to-r from-transparent via-cyan-400 to-transparent"></div>
       </div>
 
       <section id="contact" className="pb-20">

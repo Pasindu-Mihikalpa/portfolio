@@ -23,7 +23,7 @@ const Preloader = ({ onComplete }) => {
   }, [onComplete]);
 
   return (
-    <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#050A15] text-white">
+    <div className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-[#050A15] text-white">
       
       {/* Percentage Text */}
       <div className="mb-2 font-mono text-6xl font-black md:text-8xl text-cyan-400 animate-pulse">
@@ -36,13 +36,8 @@ const Preloader = ({ onComplete }) => {
         <div 
           className="h-full transition-all duration-75 ease-out bg-cyan-400 shadow-[0_0_15px_#22d3ee]"
           style={{ width: `${count}%` }}
-        ></div>
+        />
       </div>
-
-      {/* Loading Text */}
-      <p className="mt-4 text-xs font-bold tracking-[0.2em] text-gray-500 uppercase">
-        Loading Resources
-      </p>
     </div>
   );
 };
