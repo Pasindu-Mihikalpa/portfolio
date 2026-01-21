@@ -27,3 +27,6 @@ To run this locally, you will need your own EmailJS credentials. Create a `.env`
 VITE_EMAILJS_SERVICE_ID=your_service_id
 VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
+```
+
+<!-- Deployment trigger -->
