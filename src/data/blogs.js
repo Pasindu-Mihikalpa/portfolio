@@ -4,7 +4,7 @@ export const blogs = [
     title: "Don’t Let Dirty Data Ruin Your Insights: Preparing Data in Excel",
     date: "Jan 4, 2026",
     excerpt: "Preparing data for analysis in Microsoft Excel ensures accurate insights and efficient workflows. This blog article outlines essential steps and techniques to transform raw data into analysis-ready formats.",
-    link: "https://medium.com/@pmihikalpa/dont-let-dirty-data-ruin-your-insights-preparing-data-in-excel-d9e8c86c354d",
+    link: "https://medium.com/@pasindumihikalpa/dont-let-dirty-data-ruin-your-insights-preparing-data-in-excel-d9e8c86c354d",
     status: "active"
   },
   {
@@ -20,7 +20,7 @@ export const blogs = [
     title: "Quick Guide to Crushing the Microsoft PL-300 Exam",
     date: "Dec 16, 2025",
     excerpt: "If you want to validate your Power BI skills, the PL-300: Microsoft Power BI Data Analyst exam is your target. This certification proves you can model, visualize, and analyze data to drive business value.",
-    link: "https://your-blogger-site.com/css-grid",
+    link: "https://pmihikalpa.medium.com/quick-guide-to-crushing-the-microsoft-pl-300-exam-550c81544de7",
     status: "active"
   }
 ];

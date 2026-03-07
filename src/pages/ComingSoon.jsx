@@ -14,10 +14,10 @@ export default function ComingSoon() {
       </p>
 
       <Link 
-        to="/projects" 
+        to="/" 
         className="px-8 py-3 bg-[#191919] border border-gray-600 rounded-full hover:border-gold hover:text-gold transition-all"
       >
-        Back to Portfolio
+        Back to Home
       </Link>
     </div>
   );

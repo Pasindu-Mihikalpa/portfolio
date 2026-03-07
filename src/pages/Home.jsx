@@ -75,7 +75,7 @@ export default function Home() {
               {/* Social Media Links */}
               <div className="flex gap-4 pt-4">
                 <a 
-                  href="https://www.linkedin.com/in/pasindu-mihikalpa/" 
+                  href="https://github.com/Pasindu-Mihikalpa" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 border-2 border-[#2f3b4b] text-white rounded-full hover:border-cyan-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"
@@ -84,7 +84,7 @@ export default function Home() {
                   <Linkedin size={24} />
                 </a>
                 <a 
-                  href="https://github.com/your-username" 
+                  href="https://github.com/Pasindu-Mihikalpa" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 border-2 border-[#2f3b4b] text-white rounded-full hover:border-cyan-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"
@@ -102,7 +102,7 @@ export default function Home() {
                   <X size={24} />
                 </a>
                 <a 
-                  href="mailto:pmihikalpa2022@gmail.com" 
+                  href="mailto:pasindumihikalpa@outlook.com" 
                   className="p-4 border-2 border-[#2f3b4b] text-white rounded-full hover:border-cyan-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"
                   aria-label="Email"
                 >

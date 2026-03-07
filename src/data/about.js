@@ -5,7 +5,7 @@ export const aboutData = {
   personalInfo: [
     { label: "Birthday", value: "May 04, 2001" },
     { label: "Phone", value: "+94 74 091 5987" },
-    { label: "Email", value: "pmihikalpa2022@gmail.com" },
+    { label: "Email", value: "pasindumihikalpa@outlook.com" },
     { label: "From", value: "Sri Lanka" },
     { label: "Language", value: "English, Sinhala" },
   ],

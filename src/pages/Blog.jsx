@@ -37,7 +37,7 @@ export default function Blog() {
 
         {/* External Blog Link */}
         <div className="flex justify-center mt-12">
-          <Button variant="outline" href="https://medium.com/@pmihikalpa2022">
+          <Button variant="outline" href="https://medium.com/@pasindumihikalpa">
             Visit Main Blog <ExternalLink size={20} />
           </Button>
         </div>

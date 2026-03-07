@@ -72,7 +72,7 @@ export default function Contact() {
               </div>
               <div>
                 <h4 className="text-sm font-medium text-gray-400">Email</h4>
-                <p className="text-lg font-bold text-white">pmihikalpa2022@gmail.com</p>
+                <p className="text-lg font-bold text-white">pasindumihikalpa@outlook.com</p>
               </div>
             </div>
 

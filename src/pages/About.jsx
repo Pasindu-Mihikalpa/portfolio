@@ -2,7 +2,7 @@
 import AboutSection from '../components/ui/AboutSection';
 import { aboutData } from '../data/about';
 import profileImage from '../assets/my_profile_2.png';
-import cvFile from '../assets/CV_Pasindu-Mihikalpa.pdf';
+import cvFile from '../assets/Pasindu Mihikalpa CV.pdf';
 
 export default function About() {
   return (

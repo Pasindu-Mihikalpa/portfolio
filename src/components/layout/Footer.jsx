@@ -29,7 +29,7 @@ export default function Footer() {
           <a href="https://wa.me/94740915987" target="_blank" rel="noopener noreferrer" className="text-gray-400 transition-colors hover:text-cyan-400">
             <MessageCircle size={20} />
           </a>
-          <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" className="text-gray-400 transition-colors hover:text-cyan-400">
+          <a href="mailto:pasindumihikalpa@outlook.com" className="text-gray-400 transition-colors hover:text-cyan-400">
             <Mail size={20} />
           </a>
         </div>
