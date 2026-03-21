@@ -30,6 +30,13 @@ const ProjectCard = ({ project }) => {
           {project.category}
         </span>
 
+        {/* Description (Optional - Shows for Supply Chain) */}
+        {project.description && (
+          <p className="mt-2 text-xs transition-transform duration-300 delay-100 transform translate-y-4 text-cyan-200 line-clamp-2 group-hover:translate-y-0">
+            {project.description}
+          </p>
+        )}
+
         {/* Links Slide Up */}
         <div className="flex gap-4 mt-6 transition-all duration-300 delay-150 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
           {project.links.length > 0 ? (
@@ -63,6 +70,9 @@ ProjectCard.propTypes = {
     category: PropTypes.string.isRequired,
     mainIcon: PropTypes.node.isRequired,
     image: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    technologies: PropTypes.arrayOf(PropTypes.string),
+    stats: PropTypes.object,
     links: PropTypes.arrayOf(
       PropTypes.shape({
         icon: PropTypes.node,
