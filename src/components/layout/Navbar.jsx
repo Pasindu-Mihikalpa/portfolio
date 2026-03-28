@@ -8,13 +8,13 @@ const Navbar = () => {
   // Style: Uppercase, bold, white text. Active = Cyan Blue.
   const navClass = ({ isActive }) =>
     isActive
-      ? "text-cyan-400 font-bold text-sm tracking-wide uppercase px-3 py-2" 
-      : "text-white hover:text-cyan-400 font-bold text-sm tracking-wide uppercase px-3 py-2 transition-colors"; 
+      ? "text-cyan-400 font-bold text-sm tracking-wide uppercase px-3 py-1.5" 
+      : "text-white hover:text-cyan-400 font-bold text-sm tracking-wide uppercase px-3 py-1.5 transition-colors"; 
 
   return (
     <nav className="bg-[#050A15] border-b border-[#1f2937] sticky top-0 z-50">
-      <div className="container px-6 mx-auto">
-        <div className="flex items-center justify-between h-20">
+      <div className="container px-4 mx-auto md:px-6">
+        <div className="flex items-center justify-between h-16 md:h-[72px]">
           
           {/* 1. LOGO */}
           <Link to="/" className="text-3xl font-black tracking-wider text-white">

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, onOpenDetails }) => {
   return (
     <div className="group relative h-[300px] rounded-2xl overflow-hidden cursor-pointer shadow-lg shadow-black/50 border border-[#222]">
       
@@ -38,7 +38,18 @@ const ProjectCard = ({ project }) => {
         )}
 
         {/* Links Slide Up */}
-        <div className="flex gap-4 mt-6 transition-all duration-300 delay-150 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+        <div className="flex flex-wrap items-center justify-center gap-3 mt-6 transition-all duration-300 delay-150 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onOpenDetails(project);
+            }}
+            className="px-4 py-2 text-xs font-bold tracking-wide text-white transition-colors border rounded-full bg-black/40 border-cyan-300/40 hover:bg-cyan-500 hover:border-cyan-300"
+          >
+            Project Snapshot
+          </button>
+
           {project.links.length > 0 ? (
             project.links.map((link, index) => (
               <a 
@@ -46,6 +57,7 @@ const ProjectCard = ({ project }) => {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(event) => event.stopPropagation()}
                 className="flex items-center justify-center w-10 h-10 text-gray-900 transition-all bg-white rounded-full shadow-lg hover:bg-black hover:text-cyan-400 hover:scale-110"
               >
                 {link.icon}
@@ -64,6 +76,7 @@ const ProjectCard = ({ project }) => {
 };
 
 ProjectCard.propTypes = {
+  onOpenDetails: PropTypes.func.isRequired,
   project: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
@@ -71,11 +84,27 @@ ProjectCard.propTypes = {
     mainIcon: PropTypes.node.isRequired,
     image: PropTypes.string.isRequired,
     description: PropTypes.string,
+    features: PropTypes.arrayOf(PropTypes.string),
+    techStack: PropTypes.arrayOf(PropTypes.string),
     technologies: PropTypes.arrayOf(PropTypes.string),
     stats: PropTypes.object,
+    roadmap: PropTypes.arrayOf(PropTypes.string),
+    role: PropTypes.string,
+    status: PropTypes.string,
+    duration: PropTypes.string,
+    author: PropTypes.string,
+    files: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        type: PropTypes.string,
+        size: PropTypes.string,
+        url: PropTypes.string.isRequired,
+      })
+    ),
     links: PropTypes.arrayOf(
       PropTypes.shape({
         icon: PropTypes.node,
+        label: PropTypes.string,
         url: PropTypes.string.isRequired,
       })
     ),

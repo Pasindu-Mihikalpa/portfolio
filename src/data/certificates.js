@@ -77,7 +77,7 @@ export const certificates = [
   {
     id: 9,
     title: "Web Design for Beginners",
-    issuer: "SLASSCOM Academy",
+    issuer: "DP Education",
     date: "2023",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
     certificateUrl: webDesignCert,
@@ -85,7 +85,7 @@ export const certificates = [
   {
     id: 10,
     title: "Python for Beginners",
-    issuer: "SLASSCOM Academy",
+    issuer: "DP Education",
     date: "2023",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     certificateUrl: pythonCert,

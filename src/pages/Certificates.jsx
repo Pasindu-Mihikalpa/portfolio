@@ -1,96 +1,164 @@
-import React, { useState } from 'react';
-import { Award, X, Loader, ExternalLink } from 'lucide-react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
+import {
+  Award,
+  X,
+  ExternalLink,
+  Users,
+  Monitor,
+  Presentation,
+  CalendarCheck,
+  Zap,
+  Network,
+  Handshake,
+  Palette,
+  Code2,
+} from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { certificates } from '../data/certificates';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Certificates() {
   const [viewingCertId, setViewingCertId] = useState(null);
-  const [loadingCertId, setLoadingCertId] = useState(null);
+  const [hoveredCertId, setHoveredCertId] = useState(null);
+  const sectionRef = useRef(null);
+  const cardsRef = useRef([]);
 
-  const handleCertificateClick = (cert) => {
-    setLoadingCertId(cert.id);
-    setTimeout(() => {
-      setViewingCertId(cert.id);
-      setLoadingCertId(null);
-    }, 1500);
+  const getCertificateIcon = (title) => {
+    const normalizedTitle = title.toLowerCase();
+
+    if (normalizedTitle.includes('collaboration') || normalizedTitle.includes('team')) return Users;
+    if (normalizedTitle.includes('presence') || normalizedTitle.includes('virtual')) return Monitor;
+    if (normalizedTitle.includes('presentation')) return Presentation;
+    if (normalizedTitle.includes('meeting')) return CalendarCheck;
+    if (normalizedTitle.includes('agility')) return Zap;
+    if (normalizedTitle.includes('trust')) return Handshake;
+    if (normalizedTitle.includes('web design') || normalizedTitle.includes('design')) return Palette;
+    if (normalizedTitle.includes('python')) return Code2;
+    return Network;
   };
 
+  useLayoutEffect(() => {
+    const sectionElement = sectionRef.current;
+    const cardElements = cardsRef.current.filter(Boolean);
+
+    if (!sectionElement || cardElements.length === 0) return;
+
+    const getCardWidth = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) return 244;
+      if (width >= 768) return 232;
+      return 220;
+    };
+
+    const getSpread = () => {
+      const sidePadding = 8;
+      const containerWidth = sectionElement.clientWidth;
+      const cardWidth = getCardWidth();
+      const maxEdgeDistance = Math.max(0, containerWidth / 2 - cardWidth / 2 - sidePadding);
+      const halfCount = (cardElements.length - 1) / 2;
+
+      if (halfCount <= 0) return 0;
+      return maxEdgeDistance / halfCount;
+    };
+
+    const initialRotations = [-10, -7, -4, -1, 2, 5, 8, -6, 4, 9];
+
+    const context = gsap.context(() => {
+      gsap.set(cardElements, {
+        left: '50%',
+        top: '50%',
+        xPercent: -50,
+        yPercent: -50,
+        x: 0,
+        y: 0,
+        zIndex: (index) => cardElements.length - index,
+        rotation: (index) => initialRotations[index] ?? 0,
+        transformOrigin: '50% 50%',
+        willChange: 'transform',
+      });
+
+      gsap.to(cardElements, {
+        x: (index) => (index - (cardElements.length - 1) / 2) * getSpread(),
+        y: (index) => (index % 2 === 0 ? -10 : 10),
+        rotation: 0,
+        stagger: 0.09,
+        duration: 1.05,
+        ease: 'expo.out',
+        overwrite: 'auto',
+        scrollTrigger: {
+          trigger: sectionElement,
+          start: 'top 76%',
+          once: true,
+        },
+      });
+    }, sectionElement);
+
+    return () => context.revert();
+  }, []);
+
   return (
-    <div className="relative py-24 bg-[#050A15]/50 overflow-hidden">
-      
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div 
-          className="absolute inset-0 opacity-10 animate-float-slow"
-          style={{ 
-            backgroundImage: `repeating-linear-gradient(
-              45deg,
-              transparent,
-              transparent 100px,
-              rgba(6, 182, 212, 0.03) 100px,
-              rgba(6, 182, 212, 0.03) 200px
-            ),
-            repeating-linear-gradient(
-              -45deg,
-              transparent,
-              transparent 100px,
-              rgba(6, 182, 212, 0.03) 100px,
-              rgba(6, 182, 212, 0.03) 200px
-            )`,
-          }}
-        />
-        <div 
-          className="absolute inset-0 opacity-5 animate-float-slow"
-          style={{ 
-            backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%)',
-            animationDelay: '-5s'
-          }}
-        />
-      </div>
-      
-      {/* Header */}
-      <div className="container relative z-10 px-6 mx-auto mb-16 text-center">
+    <section
+      id="certificates"
+      ref={sectionRef}
+      className="relative w-full px-6 py-24 lg:px-20"
+    >
+
+      <div className="relative z-10 mb-14 text-center">
         <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
-          My <span className="text-cyan-400">Certificates</span>
+          Professional <span className="text-cyan-400">Certificates</span>
         </h2>
-        <p className="max-w-2xl mx-auto text-gray-400">
-          Professional certifications and achievements that validate my skills and expertise.
+        <p className="max-w-3xl mx-auto text-gray-400">
+          A practical, structured showcase of certificates that represent learning, execution, and consistency.
         </p>
       </div>
 
-      {/* Marquee Container */}
-      <div className="relative z-10 w-full overflow-hidden mask-edges">
-        
-        {/* Scrolling Track */}
-        <div className="flex items-center gap-16 py-8 animate-marquee">
-          
-          {[...certificates, ...certificates].map((cert, index) => (
-            <div 
-              key={index} 
-              className="flex flex-col items-center justify-center gap-4 transition-transform duration-300 cursor-pointer group hover:scale-110"
-              title={`${cert.title} - Click to view`}
-              onClick={() => handleCertificateClick(cert)}
-            >
-              {/* Logo Card */}
-              <div className="relative flex items-center justify-center w-24 h-24 p-5 transition-all border border-gray-800 shadow-lg rounded-2xl bg-gray-900/50 group-hover:border-cyan-400/50 group-hover:shadow-cyan-400/20">
-                {loadingCertId === cert.id ? (
-                  <Loader className="animate-spin text-cyan-400" size={32} />
-                ) : (
-                  <img 
-                    src={cert.logo} 
-                    alt={cert.issuer} 
-                    className="w-full h-full object-contain filter grayscale-20 group-hover:grayscale-0 transition-all duration-300"
-                  />
-                )}
-              </div>
-              
-              {/* Certificate Title */}
-              <span className="text-sm font-medium text-gray-500 transition-colors group-hover:text-cyan-400">
-                {cert.title}
-              </span>
-            </div>
-          ))}
+      <div className="relative z-10 h-[360px] w-full overflow-visible">
+        {certificates.map((cert, index) => {
+          const Icon = getCertificateIcon(cert.title);
+          const isHovered = hoveredCertId === cert.id;
 
-        </div>
+          return (
+          <button
+            key={cert.id}
+            ref={(element) => {
+              cardsRef.current[index] = element;
+            }}
+            type="button"
+            title={cert.title + ' - Click to view'}
+            onClick={() => setViewingCertId(cert.id)}
+            onMouseEnter={() => setHoveredCertId(cert.id)}
+            onMouseLeave={() => setHoveredCertId(null)}
+            style={{
+              zIndex: isHovered ? certificates.length + 20 : certificates.length - index,
+            }}
+            className={`group absolute w-[220px] overflow-hidden rounded-2xl border bg-[#0B1220]/70 p-5 text-left backdrop-blur-sm transition-all duration-300 md:w-[232px] lg:w-[244px] ${
+              isHovered
+                ? 'scale-105 -translate-y-4 border-cyan-300/60 shadow-[0_22px_38px_rgba(6,182,212,0.24)]'
+                : 'border-white/10 shadow-[0_16px_28px_rgba(0,0,0,0.28)]'
+            }`}
+          >
+            <p className="text-xs font-semibold tracking-[0.18em] text-cyan-300/90">
+              {String(index + 1).padStart(2, '0')}
+            </p>
+
+            <h3 className="mt-2 text-[1.65rem] font-black leading-tight tracking-tight text-white">
+              {cert.title}
+            </h3>
+
+            <p className="mt-3 text-sm font-medium text-slate-300">{cert.issuer}</p>
+            <p className="text-sm text-slate-400">{cert.date}</p>
+
+            <div className="flex items-center justify-between h-16 px-4 mt-5 border rounded-xl border-white/12 bg-black/30">
+              <span className="text-xs font-semibold tracking-wider text-cyan-200/90">CLICK TO VIEW</span>
+              <div className="flex items-center justify-center w-10 h-10 transition-transform duration-300 rounded-full bg-cyan-400/10 group-hover:scale-110">
+                <Icon className="text-cyan-300" size={20} />
+              </div>
+            </div>
+          </button>
+          );
+        })}
       </div>
 
       {/* Certificate Viewer Modal */}
@@ -116,15 +184,15 @@ export default function Certificates() {
             {(() => {
               const cert = certificates.find(c => c.id === viewingCertId);
               return (
-                <div className="relative w-full h-125 bg-gray-800 flex items-center justify-center">
-                  <div className="text-center space-y-6">
+                <div className="relative flex items-center justify-center w-full bg-gray-800 h-[32rem]">
+                  <div className="space-y-6 text-center">
                     <div className="flex justify-center">
-                      <div className="p-6 bg-cyan-500/10 rounded-full">
+                      <div className="p-6 rounded-full bg-cyan-500/10">
                         <Award className="text-cyan-400" size={80} />
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-2">{cert?.title}</h3>
+                      <h3 className="mb-2 text-2xl font-bold text-white">{cert?.title}</h3>
                       <p className="text-gray-400">{cert?.issuer} • {cert?.date}</p>
                     </div>
                     <a
@@ -152,7 +220,7 @@ export default function Certificates() {
                 
                 <button
                   onClick={() => setViewingCertId(null)}
-                  className="px-6 py-2 font-semibold text-white transition-colors rounded-lg bg-gray-700 hover:bg-gray-600"
+                  className="px-6 py-2 font-semibold text-white transition-colors bg-gray-700 rounded-lg hover:bg-gray-600"
                 >
                   Close
                 </button>
@@ -161,6 +229,6 @@ export default function Certificates() {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Linkedin, Github, X, Mail } from 'lucide-react';
 import profileImage from '../assets/my_profile.png';
 
@@ -10,13 +10,56 @@ import Resume from './Resume';
 import Projects from './Projects';
 import Contact from './Contact';
 
+const roleTitles = [
+  'Data Analyst',
+  'Business Analyst',
+  'AI & Machine Learning Enthusiast',
+  'Tech-Driven Leader',
+];
+
 export default function Home() {
+  const [activeRoleIndex, setActiveRoleIndex] = useState(0);
+  const [typedRole, setTypedRole] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentRole = roleTitles[activeRoleIndex];
+    const isRoleFullyTyped = typedRole === currentRole;
+    const isRoleCleared = typedRole.length === 0;
+
+    const typingSpeed = isDeleting ? 45 : 90;
+    const pauseDelay = isRoleFullyTyped ? 1200 : 0;
+    const timeoutDelay = pauseDelay || typingSpeed;
+
+    const timeoutId = setTimeout(() => {
+      if (!isDeleting && !isRoleFullyTyped) {
+        setTypedRole(currentRole.slice(0, typedRole.length + 1));
+        return;
+      }
+
+      if (!isDeleting && isRoleFullyTyped) {
+        setIsDeleting(true);
+        return;
+      }
+
+      if (isDeleting && !isRoleCleared) {
+        setTypedRole(currentRole.slice(0, typedRole.length - 1));
+        return;
+      }
+
+      setIsDeleting(false);
+      setActiveRoleIndex((previousIndex) => (previousIndex + 1) % roleTitles.length);
+    }, timeoutDelay);
+
+    return () => clearTimeout(timeoutId);
+  }, [activeRoleIndex, typedRole, isDeleting]);
+
   return (
     // Main Container
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-x-hidden">
       
       {/* --- GLOBAL BACKGROUND with Motion Effect --- */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
         {/* Base gradient for depth */}
         <div className="absolute inset-0 bg-linear-to-br from-gray-900 via-black to-black"></div>
 
@@ -46,7 +89,7 @@ export default function Home() {
       </div>
       
       {/* --- SECTION 1: HERO (Profile Header) --- */}
-      <section id="home" className="relative min-h-[calc(100vh-80px)] flex items-center py-12">
+      <section id="home" className="relative min-h-[calc(100vh-80px)] flex items-center py-6">
         <div className="container relative z-10 px-6 mx-auto">
           <div className="grid items-center gap-12 md:grid-cols-2">
             
@@ -64,16 +107,20 @@ export default function Home() {
                 </h1>
               </div>
               
-              <h2 className="text-xl font-medium text-gray-300 md:text-2xl">
-                Data Analyst | Business Analyst | AI & Machine Learning Enthusiast | Tech-Driven Leader
+              {/* Dynamic Role with Typewriter Effect */} 
+              <h2 className="text-xl font-medium text-gray-300 md:text-2xl min-h-[2.25rem]">
+                <span className="inline-block text-cyan-200">
+                  {typedRole}
+                  <span className="ml-1 text-cyan-400 animate-pulse"></span>
+                </span>
               </h2>
               
-              <p className="max-w-xl text-lg leading-relaxed text-gray-400">
+              <p className="max-w-xl text-base leading-relaxed text-gray-400">
                 I am an aspiring Data Analyst and Developer with a passion for uncovering insights and building interactive solutions. Dedicated to mastering BI, AI, and Data Science to make complex data visually compelling.
               </p>
               
               {/* Social Media Links */}
-              <div className="flex gap-4 pt-4">
+              <div className="flex gap-4 pt-2">
                 <a 
                   href="https://github.com/Pasindu-Mihikalpa" 
                   target="_blank"
@@ -112,12 +159,12 @@ export default function Home() {
             </div>
 
             {/* Profile Image */}
-            <div className="relative z-10 flex justify-center group">
-              <div className="relative z-10 p-3 bg-[#050A15]/60 border-2 border-[#1f2937] rounded-[40px] group-hover:border-cyan-400 transition-colors duration-500 backdrop-blur-sm">
+            <div className="flex items-center justify-center md:justify-end group">
+              <div className="relative p-3 bg-[#050A15]/60 border-2 border-[#1f2937] rounded-[40px] group-hover:border-cyan-400 transition-colors duration-500 backdrop-blur-sm max-h-[60vh] md:max-h-[85vh]">
                 <img 
                   src={profileImage} 
                   alt="Pasindu Mihikalpa" 
-                  className="w-full max-w-120 h-auto object-cover rounded-[30px] filter grayscale-30 group-hover:grayscale-0 transform group-hover:scale-[1.02] transition-all duration-500 ease-out"
+                  className="w-auto h-auto max-h-[56vh] md:max-h-[80vh] object-contain rounded-[30px] filter grayscale-30 group-hover:grayscale-0 transform group-hover:scale-[1.02] transition-all duration-500 ease-out"
                 />
               </div>
             </div>
@@ -145,9 +192,7 @@ export default function Home() {
       {/* --- SEPARATOR --- */}
       <div className="h-px bg-linear-to-r from-transparent via-cyan-400 to-transparent"></div>
 
-      <section id="certificates">
-        <Certificates />
-      </section>
+      <Certificates />
 
       {/* --- SEPARATOR --- */}
       <div className="h-px bg-linear-to-r from-transparent via-cyan-400 to-transparent"></div>
