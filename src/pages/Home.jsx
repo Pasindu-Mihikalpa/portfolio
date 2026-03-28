@@ -140,7 +140,7 @@ export default function Home() {
                   <Github size={24} />
                 </a>
                 <a 
-                  href="https://x.com/your-handle" 
+                  href="https://x.com/PMihikalpa" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 border-2 border-[#2f3b4b] text-white rounded-full hover:border-cyan-400 hover:text-cyan-400 hover:scale-110 transition-all duration-300"
@@ -199,6 +199,13 @@ export default function Home() {
 
       <section id="resume">
         <Resume />
+      </section>
+
+      {/* --- SEPARATOR --- */}
+      <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+
+      <section id="projects">
+        <Projects />
       </section>
 
       {/* --- SEPARATOR --- */}
